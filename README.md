@@ -1,4 +1,4 @@
-##Instructions
+#Instructions
 
 1. Highlight and copy all text in price book pdf
 2. Paste in a new text file named "lennox_dna.txt" and save as ANSI in the same directory as the script
