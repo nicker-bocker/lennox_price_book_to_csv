@@ -6,7 +6,7 @@ BRAND = "Lennox"
 
 FLAGS = re.MULTILINE | re.DOTALL
 
-_cu_model_pattern = r'(?:XC|XP|SL|EL|14|16|ML)[-A-Z0-9]+-0(?:60|48|42|36|30|24)'
+_cu_model_pattern = r'(?:XC|XP|SL|EL|14|16|ML)[-A-Z0-9]+-0(?:60|48|42|36|30|24|18)'
 
 re_section = re.compile(fr'''
     (?P<seer>[1-2][0-9]\.?\d?)\s
