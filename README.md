@@ -1,5 +1,4 @@
-#Instructions
-
+# Instructions
 
 ## Initial setup
 1. `pip install -r requirements.txt`
@@ -25,7 +24,7 @@ End Sub
 4. get the output; `york_results.csv` in the same directory as script
 
 
-##Lennox
+## Lennox
 
 1. Highlight and copy all text in price book pdf using adobe reader
 2. Paste in a new text file named "lennox_dna.txt" and save as ANSI in the same directory as the script
@@ -33,7 +32,7 @@ End Sub
 4. get the output; `lennox_results.csv` in the same directory as script
 
 
-##Trane
+## Trane
 
 1. Highlight and copy all text in price book pdf using adobe reader
 2. Paste in a new text file named "lennox_dna.txt" and save as ANSI in the same directory as the script
