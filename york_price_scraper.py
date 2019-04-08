@@ -13,10 +13,11 @@ INPUT_FILE = 'york_dna.txt'
 FLAGS = re.MULTILINE | re.DOTALL
 DIR = Path('./york/')
 
+cu_pattern = re.compile(r'([1-5]\.?\d?)\sTon.*', re.I)
 
 class Parser:
     files = []
-
+    cu_pattern = re.compile(r'([1-5]\.?\d?)\sTon.*', re.I)
     def iter_files(self):
         for f in self.files:
             p = DIR / (f + '.csv')
@@ -70,7 +71,7 @@ class HpParser(Parser):
                     sys.brand = BRAND
                     sys.type = 'HP-AHU'
                     sys.size, sys.cu_model, *_, sys.cu_price = wrows[0][:6]
-                    sys.size = cu_pattern.match(sys.size).group(1)
+                    sys.size = self.cu_pattern.match(sys.size).group(1)
                     sys.cu_dimensions = wrows[1][4]
                     sys.cu_mop = wrows[2][4]
                     if len(wrows) > 3:
@@ -88,7 +89,7 @@ class HpParser(Parser):
                         print('!!!!!!!!!!!!!!ERROR!!!!!!!!!!!!!!')
                         print(row)
                     if sys.seer:
-                        all_systems.append(sys.to_dict())
+                        all_systems.append(vars(sys))
         return all_systems
 
 
@@ -99,7 +100,7 @@ class ScParser(Parser):
     ]
 
     def parse(self):
-        cu_pattern = re.compile(r'([1-5]\.?\d?)\sTon.*', re.I)
+
         all_systems = []
         for table in self.iter_files():
             rows = list(table)
@@ -176,7 +177,7 @@ class ScParser(Parser):
                         except ValueError:
                             print('!!!!!!!!!!!!!!ERROR!!!!!!!!!!!!!!')
                             print(row)
-                    d = sys.to_dict()
+                    d = vars(sys)
                     if 'seer' in d and d['seer']:
                         all_systems.append(d)
         return all_systems
@@ -240,7 +241,7 @@ class GasParser(Parser):
                         except ValueError:
                             print('!!!!!!!!!!!!!!ERROR!!!!!!!!!!!!!!')
                             print(row)
-                    d = sys.to_dict()
+                    d = vars(sys)
                     if 'seer' in d and d['seer']:
                         all_systems.append(d)
         return all_systems
