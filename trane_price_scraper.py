@@ -1,15 +1,12 @@
 import csv
 import re
-import math
-import common
 
+import common
 
 BRAND = "Trane"
 SAVE_FILE = 'trane_results.csv'
 INPUT_FILE = 'trane_dna.txt'
 FLAGS = re.MULTILINE | re.DOTALL
-
-
 
 model_pattern = r'[0-9A-Z*]{6,}'
 
@@ -64,8 +61,6 @@ re_gas = re.compile(fr'''
     \$(?P<system_price>\d+)
 ''', flags=FLAGS | re.VERBOSE)
 
-
-
 PATTERNS = [
     ('HP-AHU', re_hp),
     ('SC-AHU', re_sc),
@@ -73,12 +68,11 @@ PATTERNS = [
 ]
 
 
-
 def get_re_dict(text, patterns):
     for t, p in patterns:
         m = p.search(text)
         if m:
-            return {'type':t,  **m.groupdict()}
+            return {'type': t, **m.groupdict()}
 
 
 def main():
@@ -120,8 +114,6 @@ def main():
         w = csv.DictWriter(f, fieldnames=common.FIELDS)
         w.writeheader()
         w.writerows(results)
-
-
 
     # results = set()
     # for section in re_section_header.finditer(dna):
@@ -167,9 +159,6 @@ if __name__ == '__main__':
     test = test.replace(',', '')
     from pprint import pprint
 
-
     m = re_gas.search(test)
     print(m)
     pprint(m.groupdict())
-
-

@@ -1,7 +1,7 @@
 import csv
-import re
 import math
-from contextlib import suppress
+import re
+
 import common
 
 BRAND = "Lennox"
@@ -108,7 +108,7 @@ def main():
                 prices = sum(p for k, p in sys_map.items()
                              if 'price' in k and 'system' not in k and p > 0)
                 sys_map['cu_price'] = sys_map['system_price'] - prices
-                size = round(sys_map['cooling_btu'] / 12000 / 0.5) * 0.5
+                size = round(sys_map['cu_btu'] / 12000 / 0.5) * 0.5
                 if math.isclose(size, 4.5):
                     size = 5
                 sys_map['size'] = size

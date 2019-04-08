@@ -5,9 +5,23 @@
 
 
 ## York
-1. Save the pricing workbook in the same path as the script
-2. run `python york_price_scraper.py`
-3. get the output; `york_results.csv` in the same directory as script
+1. Export Excel to csv. https://www.extendoffice.com/documents/excel/2980-excel-save-export-each-sheet-as-csv.html#vba
+```
+Public Sub SaveWorksheetsAsCsv()
+    Dim xWs As Worksheet
+    Dim xDir As String
+    Dim folder As FileDialog
+    Set folder = Application.FileDialog(msoFileDialogFolderPicker)
+    If folder.Show <> -1 Then Exit Sub
+    xDir = folder.SelectedItems(1)
+    For Each xWs In Application.ActiveWorkbook.Worksheets
+    xWs.SaveAs xDir & "\" & xWs.Name, xlCSV
+    Next
+End Sub
+```
+2. ensure price csv files are in a directory named `./york` in the script path
+3. run `python york_price_scraper.py`
+4. get the output; `york_results.csv` in the same directory as script
 
 ##Lennox
 

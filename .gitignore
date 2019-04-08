@@ -167,3 +167,8 @@ fabric.properties
 /trane_results.csv
 /lennox_results.csv
 /york_pricebook.xlsx
+/york_dna.txt
+/york_results.csv
+york/
+york_pricebook.pdf
+york_results.csv
